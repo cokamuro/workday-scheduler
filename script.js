@@ -21,7 +21,6 @@ function applyClasses(){
         thisRow.children().eq(0).text(dispTime);
         thisRow.attr("id","event-"+i);
         
-
         if(i<currentHour){
             thisRow.children().eq(1).addClass("past");
         } else if (i==currentHour) {
@@ -34,10 +33,27 @@ function applyClasses(){
     
 }
 
+function loadEvents() {
+    //load events into the textareas from localstorage
+    for(var i=9;i<=17;i++){$("#event-"+i).children().eq(1).children().eq(0).val(localStorage.getItem("event-"+i))};
+}
 
+function saveEvent(hourIn) {
+    localStorage.setItem("event-"+hourIn,$("#event-"+hourIn).children().eq(1).children().eq(0).val().trim());
+}
 
 applyClasses();
+loadEvents();
 
+// add event handler for button clicks
 $("button").on("click", function (event) {
-    alert($(event.target).parent().attr("class"))
+    var parentIDstring=$(event.target).parent().parent().attr("id");
+    var hyphenPos=parentIDstring.indexOf("-");
+
+    if(hyphenPos>0){
+        //valid event ID, get hour number
+        var buttonHour=parentIDstring.substring(hyphenPos+1);
+        saveEvent(buttonHour);
+    }
   });
+
