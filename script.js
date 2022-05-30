@@ -10,7 +10,7 @@ function applyClasses(){
     //loop through hours 9 to 17
     for(var i=9;i<=17;i++){
         //get nice text for y-axis time
-        var dispTime=moment("1/1/1980 "+i+":00").format("h A");
+        var dispTime=moment(moment("1980-01-01").add(i,"hours")).format("hA");
         //clone generic tr block, and append it to tbody
         if(i!=9){$('tr').first().clone().appendTo($('tbody'));}
         //get the new tr block
