@@ -39,11 +39,18 @@ function loadEvents() {
 }
 
 function saveEvent(hourIn) {
+    //save textarea contents into localstorage
     localStorage.setItem("event-"+hourIn,$("#event-"+hourIn).children().eq(1).children().eq(0).val().trim());
 }
 
-applyClasses();
-loadEvents();
+function init(){
+    $("#currentDay").text(moment().format("LL"))
+    applyClasses();
+    loadEvents();
+}
+
+init();
+
 
 // add event handler for button clicks
 $("button").on("click", function (event) {
