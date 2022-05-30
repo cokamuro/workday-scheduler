@@ -74,7 +74,8 @@ textarea {
   color: white;
 }
 
-.save-button i:hover {
-  font-size: 150%;
-  transition: all 0.3s ease-in-out;
+.save-button:hover {
+  font-size: 20px;
+  background-color: #055c70;
+  transition: all 0.2s ease-in-out;
 }
