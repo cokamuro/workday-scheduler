@@ -1,9 +1,9 @@
 var elRoot = $("#root");
 var elTable = $("#time-block")
-var currentHour=13;
+var currentHour= (new Date()).getHours()
 
-function ApplyClasses(){
-    $('button').addClass("saveBtn");
+function applyClasses(){
+    $('button').addClass("save-button");
     $('textarea').addClass("description");
 
     for(var i=9;i<=17;i++){
@@ -34,4 +34,10 @@ function ApplyClasses(){
     
 }
 
-ApplyClasses();
+
+
+applyClasses();
+
+$("button").on("click", function (event) {
+    alert($(event.target).parent().attr("class"))
+  });
