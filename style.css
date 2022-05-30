@@ -13,6 +13,10 @@ textarea {
   padding: 10px;
 }
 
+td {
+  border-radius: 6px;
+}
+
 .container {
   justify-content: center;
   display: flex;
