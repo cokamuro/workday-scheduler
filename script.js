@@ -3,18 +3,13 @@ var elTable = $("#time-block")
 var currentHour= (new Date()).getHours()
 
 function applyClasses(){
+    //set classes for all buttons and textareas
     $('button').addClass("save-button");
     $('textarea').addClass("description");
 
+    //loop through hours 9 to 17
     for(var i=9;i<=17;i++){
-        var dispTime;
-        if(i<12){
-            dispTime=i+"AM"
-        } else if(i==12) {
-            dispTime=i+"PM"
-        } else {
-            dispTime=(i-12)+"PM"
-        }
+        var dispTime=moment("1/1/1980 "+i+":00").format("h A")
         if(i!=9){$('tr').first().clone().appendTo($('tbody'));}
         var thisRow=$('tr').last();
         if(i!=9){thisRow.removeClass("event-9");}
