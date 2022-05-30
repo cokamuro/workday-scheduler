@@ -9,23 +9,29 @@ function applyClasses(){
 
     //loop through hours 9 to 17
     for(var i=9;i<=17;i++){
-        var dispTime=moment("1/1/1980 "+i+":00").format("h A")
+        //get nice text for y-axis time
+        var dispTime=moment("1/1/1980 "+i+":00").format("h A");
+        //clone generic tr block, and append it to tbody
         if(i!=9){$('tr').first().clone().appendTo($('tbody'));}
+        //get the new tr block
         var thisRow=$('tr').last();
+        //remove the duplicated class
         if(i!=9){thisRow.removeClass("event-9");}
+        //set the time on the first td and the class
         thisRow.children().eq(0).text(dispTime);
+        thisRow.children().eq(0).addClass("hour");
+        //change the id to the correct hour
         thisRow.attr("id","event-"+i);
         
+        //set the past/present/future classes
         if(i<currentHour){
             thisRow.children().eq(1).addClass("past");
         } else if (i==currentHour) {
             thisRow.children().eq(1).addClass("present");
         } else {
             thisRow.children().eq(1).addClass("future");
-        }
-        thisRow.children().eq(0).addClass("hour");
+        }       
     }
-    
 }
 
 function loadEvents() {
@@ -46,7 +52,6 @@ function init(){
 
 init();
 
-
 // add event handler for button clicks
 $("button").on("click", function (event) {
     var parentIDstring=$(event.target).parent().parent().attr("id");
@@ -58,4 +63,3 @@ $("button").on("click", function (event) {
         saveEvent(buttonHour);
     }
   });
-
