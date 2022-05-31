@@ -49,7 +49,7 @@ $("button").on("click", function (event) {
 
     if (hyphenPos > 0) {
         //valid event ID, get hour number
-        var buttonHour = parentIDstring.substring(hyphenPos + 1);
-        saveEvent(buttonHour);
+        //var buttonHour = parentIDstring.substring(hyphenPos + 1);
+        saveEvent(parentIDstring.substring(hyphenPos + 1));
     }
 });
