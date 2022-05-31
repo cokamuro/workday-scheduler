@@ -35,6 +35,7 @@ function saveEvent(hourIn) {
     localStorage.setItem("event-" + hourIn, $("#event-" + hourIn).children().eq(1).children().eq(0).val().trim());
 }
 function init() {
+    //set element currentDay to have cleanly formatted date for today
     $("#currentDay").text(moment().format("LL"))
     applyClasses();
     loadEvents();
@@ -48,8 +49,7 @@ $("button").on("click", function (event) {
     var hyphenPos = parentIDstring.indexOf("-");
 
     if (hyphenPos > 0) {
-        //valid event ID, get hour number
-        //var buttonHour = parentIDstring.substring(hyphenPos + 1);
+        //valid event ID, get hour number & pass as a param to safeEvent
         saveEvent(parentIDstring.substring(hyphenPos + 1));
     }
 });
