@@ -31,7 +31,6 @@ function loadEvents() {
 function saveEvent(hourIn) {
     //save textarea contents into localstorage
     localStorage.setItem("event-" + hourIn, $("#event-" + hourIn).children().eq(1).val().trim());
-    console.log($("#event-" + hourIn).children().eq(1));
 }
 function init() {
     //set element currentDay to have cleanly formatted date for today
