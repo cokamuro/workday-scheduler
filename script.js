@@ -6,11 +6,9 @@ function applyClasses() {
         //get nice text for y-axis time
         var dispTime = moment(moment("1980-01-01").add(i, "hours")).format("hA");
         //clone generic tr block, and append it to tbody
-        if (i != 9) { $('tr').first().clone().appendTo($('tbody')); }
+        if (i != 9) { $(".time-block").first().clone().appendTo($(".container")); }
         //get the new tr block
-        var thisRow = $('tr').last();
-        //remove the duplicated class
-        if (i != 9) { thisRow.removeClass("event-9"); }
+        var thisRow = $(".time-block").last();
         //set the time on the first td and the class
         thisRow.children().eq(0).text(dispTime);
         //change the id to the correct hour
@@ -28,11 +26,12 @@ function applyClasses() {
 }
 function loadEvents() {
     //load events into the textareas from localstorage
-    for (var i = 9; i <= 17; i++) { $("#event-" + i).children().eq(1).children().eq(0).val(localStorage.getItem("event-" + i)) };
+    for (var i = 9; i <= 17; i++) { $("#event-" + i).children().eq(1).val(localStorage.getItem("event-" + i)) };
 }
 function saveEvent(hourIn) {
     //save textarea contents into localstorage
-    localStorage.setItem("event-" + hourIn, $("#event-" + hourIn).children().eq(1).children().eq(0).val().trim());
+    localStorage.setItem("event-" + hourIn, $("#event-" + hourIn).children().eq(1).val().trim());
+    console.log($("#event-" + hourIn).children().eq(1));
 }
 function init() {
     //set element currentDay to have cleanly formatted date for today
@@ -45,7 +44,7 @@ init();
 
 // add event handler for button clicks
 $("button").on("click", function (event) {
-    var parentIDstring = $(event.target).parent().parent().attr("id");
+    var parentIDstring = $(event.target).parent().attr("id");
     var hyphenPos = parentIDstring.indexOf("-");
 
     if (hyphenPos > 0) {
