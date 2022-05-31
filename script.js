@@ -5,9 +5,9 @@ function applyClasses() {
     for (var i = 9; i <= 17; i++) {
         //get nice text for y-axis time
         var dispTime = moment(moment("1980-01-01").add(i, "hours")).format("hA");
-        //clone generic tr block, and append it to tbody
+        //clone generic time block, and append it to container
         if (i != 9) { $(".time-block").first().clone().appendTo($(".container")); }
-        //get the new tr block
+        //get the new time block
         var thisRow = $(".time-block").last();
         //set the time on the first td and the class
         thisRow.children().eq(0).text(dispTime);
